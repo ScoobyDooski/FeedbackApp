@@ -10,13 +10,14 @@ mongoose.connect(keys.mongoURI)
 
 const app = express();
 
+//Creates the cookie session to be created by passport
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
         keys: [keys.cookieKey]
     })
 );
-//tellse passport to use cookies in our authentication process
+//tells passport to use cookies in our authentication process
 app.use(passport.initialize());
 app.use(passport.session());
 
